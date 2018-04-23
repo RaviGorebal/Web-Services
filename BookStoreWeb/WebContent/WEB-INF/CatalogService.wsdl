@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<definitions name="CatalogService" targetNamespace="http://www.java2aspire.com/book"
+	xmlns:tns="http://www.java2aspire.com/book" xmlns="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+	<types />
+	<message name="Catalog_getBookPrice">
+		<part name="String_1" type="xsd:string" />
+	</message>
+	<message name="Catalog_getBookPriceResponse">
+		<part name="result" type="xsd:float" />
+	</message>
+	<portType name="Catalog">
+		<operation name="getBookPrice" parameterOrder="String_1">
+			<input message="tns:Catalog_getBookPrice" />
+			<output message="tns:Catalog_getBookPriceResponse" />
+		</operation>
+	</portType>
+	<binding name="CatalogBinding" type="tns:Catalog">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http"
+			style="rpc" />
+		<operation name="getBookPrice">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+					use="encoded" namespace="http://www.java2aspire.com/book" />
+			</input>
+			<output>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+					use="encoded" namespace="http://www.java2aspire.com/book" />
+			</output>
+		</operation>
+	</binding>
+	<service name="CatalogService">
+		<port name="CatalogPort" binding="tns:CatalogBinding">
+			<soap:address location="http://localhost:9090/BookStoreWeb/getBookPrice" />
+		</port>
+	</service>
+</definitions>

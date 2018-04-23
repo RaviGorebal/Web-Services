@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Copyright 2004 Sun Microsystems, Inc. All rights reserved. SUN PROPRIETARY/CONFIDENTIAL. 
+	Use is subject to license terms. -->
+
+<webServices xmlns="http://java.sun.com/xml/ns/jax-rpc/ri/dd"
+	version="1.0" targetNamespaceBase="http://www.java2aspire.com/book"
+	typeNamespaceBase="http://www.java2aspire.com/book/types"
+	urlPatternBase="/getBookPrice">
+
+	<endpoint name="Catalog" displayName="Book Catalog"
+		description="Simple Web Service to get Book Price" wsdl="/WEB-INF/CatalogService.wsdl"
+		interface="edu.aspire.bookstore.service.Catalog" implementation="edu.aspire.bookstore.service.CatalogImpl" />
+
+	<endpointMapping endpointName="Catalog" urlPattern="/getBookPrice" />
+
+</webServices>

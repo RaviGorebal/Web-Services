@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="SimpleService" targetNamespace="http://www.java2aspire.com/ss"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.java2aspire.com/ss"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://www.java2aspire.com/ss">
+			<!-- Top level element -->
+			<xsd:element name="concatRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="s1" type="xsd:string" />
+						<xsd:element name="s2" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<!-- Top level element -->
+			<xsd:element name="concatResponse" type="xsd:string" />
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="concatResponseMessage">
+		<wsdl:part name="parameters" element="tns:concatResponse">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="concatRequestMessage">
+		<wsdl:part name="parameters" element="tns:concatRequest">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="SimpleService">
+		<wsdl:operation name="concat">
+			<wsdl:input message="tns:concatRequestMessage">
+			</wsdl:input>
+			<wsdl:output message="tns:concatResponseMessage">
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="SimpleServiceSOAP" type="tns:SimpleService">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="concat">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="SimpleService">
+		<wsdl:port name="SimpleServiceSOAP" binding="tns:SimpleServiceSOAP">
+			<soap:address location="http://localhost:9090/axis2/services/SimpleService" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

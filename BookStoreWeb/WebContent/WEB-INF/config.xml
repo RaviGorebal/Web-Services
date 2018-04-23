@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://java.sun.com/xml/ns/jax-rpc/ri/config">
+	<service name="CatalogService" targetNamespace="http://www.java2aspire.com/book" 
+		typeNamespace="http://www.java2aspire.com/book/types" packageName="edu.aspire.bookstore.service"> 
+		<interface name="edu.aspire.bookstore.service.Catalog" servantName="edu.aspire.bookstore.service.CatalogImpl"/>
+	</service>
+	<!-- 
+	<wsdl location="http://localhost:9292/BookStoreWeb/getBookPrice?WSDL"
+		packageName="edu.aspire.bookstore.client" /> -->
+</configuration>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.java2aspire.com/ss" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SimpleService" targetNamespace="http://www.java2aspire.com/ss">
+  <!-- Input message -->
+  <wsdl:message name="aspireRequestMsg">
+    <wsdl:part name="s1" type="xsd:string"/>
+    <wsdl:part name="s2" type="xsd:string"/>
+  </wsdl:message>
+  <!-- Output messsage -->
+  <wsdl:message name="aspireResponseMsg">
+    <wsdl:part name="result" type="xsd:string"/>
+  </wsdl:message>
+  
+  <!-- Mappd with SEI -->
+  <wsdl:portType name="SimpleService">
+    <wsdl:operation name="concat">
+      <wsdl:input message="tns:aspireRequestMsg"/>
+      <wsdl:output message="tns:aspireResponseMsg"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  
+  <!-- Message format, Messaging style, Encoding style and Transport protocol -->
+  <wsdl:binding name="SimpleServiceSOAP" type="tns:SimpleService">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="concat">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body namespace="http://www.java2aspire.com/ss" use="literal" parts="s1 s2"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body namespace="http://www.java2aspire.com/ss" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  
+  <wsdl:service name="SimpleService">
+    <wsdl:port binding="tns:SimpleServiceSOAP" name="SimpleServiceSOAP">
+      <soap:address location="http://localhost:9090/axis2/services/SimpleServiceRPC"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

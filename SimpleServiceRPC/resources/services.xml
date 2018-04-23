@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- This file was auto-generated from WSDL --><!-- by the Apache Axis2 version: 1.7.0-SNAPSHOT  Built on : Jan 08, 2012 (09:40:19 GMT) --><serviceGroup>
+    <service name="SimpleService">
+        <messageReceivers>
+            <messageReceiver mep="http://www.w3.org/ns/wsdl/in-out" class="edu.aspire.ss.SimpleServiceMessageReceiverInOut"/>
+        </messageReceivers>
+        <parameter name="ServiceClass">edu.aspire.ss.SimpleServiceSkeleton</parameter>
+        <parameter name="useOriginalwsdl">true</parameter>
+        <parameter name="modifyUserWSDLPortAddress">true</parameter>
+        <operation name="concat" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://www.java2aspire.com/ss">
+            <actionMapping>http://www.java2aspire.com/ss/SimpleService/concatRequest</actionMapping>
+            <outputActionMapping>http://www.java2aspire.com/ss/SimpleService/concatResponse</outputActionMapping>
+        </operation>
+    </service>
+</serviceGroup>
